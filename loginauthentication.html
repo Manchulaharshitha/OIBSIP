@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Login Page</title>
+        <style>
+            body
+            {
+                font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+                text-align: center;
+                margin-top: 50px;
+            }
+            form
+            {
+                border: 1px solid #ccc;
+                padding: 20px;
+                width: 300px;
+                margin: 0 auto;
+            }
+            input
+            {
+                margin-bottom: 10px;
+                padding: 8px;
+                width: 100%;
+                box-sizing: border-box;
+            }
+            button
+            {
+                background-color: beige;
+                color: white;
+                padding: 10px;
+                border: none;
+                cursor: pointer;
+                width: 100%;
+            }
+        </style>
+    </head>
+    <body>
+        <h2>Login Page</h2>
+        <form id="loginform">
+            <input type="text" id="username" placeholder="Username">
+            <input type="password" id="password" placeholder="Password">
+            <button type="button" onclick="login()">Login</button>
+        </form>
+        <script>
+            function login()
+            {
+                var username = document.getElementById("username").value;
+                var password = document.getElementById("password").value;
+                if (username == "user" && password == "password")
+                {
+                    alert("Login successfull");
+                    document.getElementById("username").value = "";
+                    document.getElementById("password").value = "";
+                }
+                else
+                {
+                    alert("Invalid username or password,please try again later.");
+                    document.getElementById("password").value="";
+                }
+            }
+        </script>
+    </body>
+</html>

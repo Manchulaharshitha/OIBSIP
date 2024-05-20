@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"
+        <title>Simple Calculator</title>
+        <style>
+            /* Basic styling for calculator layout */
+            .calculator {
+                width: 350px;
+                border: 1px solid #ccc;
+                padding: 10px;
+                border-radius: 5px;
+                background-color: rgb(184, 226, 231);
+            }
+            button {
+                width: 50px;
+                height: 50px;
+                font-size: 20px;
+                margin: 5px;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="calculator">
+            <input type="text" id="display" disabled>
+            <br>
+            <button>(</button>
+            <button>)</button>
+            <button onclick="useAnswer()">Ans</button>
+            <button onclick="deleteLast()">del</button>
+            <button onclick="clearDisplay()">clear</button>
+            <br>
+            <button onclick="appendToDisplay('7')">7</button>
+            <button onclick="appendToDisplay('8')">8</button>
+            <button onclick="appendToDisplay('9')">9</button>
+            <button onclick="calculatePercentage()">%</button>
+            <button onclick="calculateSquareRoot()">√</button>
+            <br>
+            <button onclick="appendToDisplay('4')">4</button>
+            <button onclick="appendToDisplay('5')">5</button>
+            <button onclick="appendToDisplay('6')">6</button>
+            <button onclick="appendToDisplay('*')">*</button>
+            <button onclick="appendToDisplay('/')">/</button>
+            <br>
+            <button onclick="appendToDisplay('1')">1</button>
+            <button onclick="appendToDisplay('2')">2</button>
+            <button onclick="appendToDisplay('3')">3</button>
+            <button onclick="appendToDisplay('+')">+</button>
+            <button onclick="appendToDisplay('-')">-</button>
+            <br>
+            <button onclick="appendDot()">.</button>
+            <button onclick="appendToDisplay('0')">0</button>
+            <button onclick="toggleSign()">+/-</button>
+            <button onclick="calculateResult()">=</button> 
+        </div>
+        <script>
+            let answer = 0;
+            function appendToDisplay(value) 
+            {
+
+                let display = document.getElementById('display');
+                display.value += value;
+            }
+            function clearDisplay() 
+            {
+                document.getElementById('display').value = '';
+            }
+            function deleteLast() 
+            {
+                let display = document.getElementById('display');
+                display.value = display.value.slice(0, -1);
+            }
+            function useAnswer() 
+            {
+                let display = document.getElementById('display');
+                display.value += answer;
+            }
+            function calculatePercentage() 
+            {
+                let display = document.getElementById('display');
+                display.value = parseFloat(display.value) / 100;
+            }
+            function calculateSquareRoot() 
+            {
+                let display = document.getElementById('display');
+                display.value = Math.sqrt(parseFloat(display.value));
+            }
+            function toggleSign() 
+            {
+                let display = document.getElementById('display');
+                display.value = parseFloat(display.value) * -1;
+            }
+            function calculateResult() 
+            {
+                let display = document.getElementById('display');
+                try 
+                {
+                    answer = eval(display.value);
+                    display.value = answer;
+                } 
+                catch (e) 
+                {
+                    display.value = 'Error';
+                }
+            }
+        </script>
+    </body>
+</html>
